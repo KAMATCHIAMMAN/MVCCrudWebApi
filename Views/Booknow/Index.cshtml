@@ -1,0 +1,37 @@
+﻿<h1>Book your hotels Now</h1>
+@*@{
+	var hotels = ViewData["hotels"] as List<ModelViewController.Models.Booknow>;
+}
+<h1>@ViewData["title"]</h1>*@
+
+@*@{
+	var hotels = ViewBag.hotels;
+}*@
+
+
+@*
+<h1>@ViewBag.name</h1>
+*@
+@model IEnumerable<ModelViewController.Models.Booknow>
+<a a class="btn btn-primary" asp-controller="Booknow" asp-action="CreateBooknow">Add a Booking</a>
+<table class="table">
+<tr>
+
+<th>Hotelname</th>
+<th>Amount</th>
+<th>Edit</th>
+<th>Delete</th>
+<th></th>
+</tr> 
+@foreach(var hotel in Model)
+{
+	<tr>
+	 
+	<td>@hotel.hotelname</td>
+	<td>@hotel.amount</td>	
+	<td><a  class="btn btn-primary"  asp-controller="Booknow" asp-action="Edit" asp-route-id="@hotel.amount">Edit</a></td>
+	<td><a  class="btn btn-danger"  asp-controller="Booknow" asp-action="Delete" asp-route-id="@hotel.amount">Delete</a></td>
+	</tr>
+}
+</table>
+
